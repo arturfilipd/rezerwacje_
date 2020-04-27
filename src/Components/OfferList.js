@@ -138,6 +138,7 @@ export default class OfferList extends Component {
             key={result.id}
             hotel={result}
             changePage={this.props.changePage}
+            userID= {this.props.userID}
             phrase={this.state.searchPhrase}
         />)
 
