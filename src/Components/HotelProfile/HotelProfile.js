@@ -157,7 +157,6 @@ export default class HotelProfile extends Component{
         const favB = this.favoriteButton();
         return(
             <div className='hotelProfile'>
-                UID: {this.props.userID}
                 <div className='hotelInfo'>
                     <div className='hotelInfoCol'>
                         <img src={placeholder} alt="not available"/>
