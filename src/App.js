@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import SearchBar from "./Components/SearchBar/SearchBar";
+import UserBar from "./Components/UserBar";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentPage: [],
+            userID: -1,
+        }
+        this.changePage = this.changePage.bind(this);
+        this.changeUser = this.changeUser.bind(this);
+    }
+
+    changePage(page){
+        this.setState({
+            currentPage: page
+        });
+
+    }
+
+    componentDidMount() {
+        this.changePage(<SearchBar changePage={this.changePage}/>);
+    }
+
+    changeUser(id){
+        this.setState({
+            userID: id
+        })
+        //this.state.currentPage.changeUser(id);
+    }
+
+
+    render(){
+        return (
+            <div>
+                <UserBar changePage={this.changePage} changeUser={this.changeUser}/>
+                <div className='page'>
+                    {this.state.currentPage}
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
